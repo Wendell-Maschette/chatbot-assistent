@@ -1,8 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { HttpService } from '@nestjs/axios';
-import { AxiosResponse, AxiosRequestConfig } from 'axios';
-import { firstValueFrom } from 'rxjs';
 import { EvolutionApiResolver } from 'src/resolvers/evolution-api/evolution-api.resolver';
 
 @Injectable()
