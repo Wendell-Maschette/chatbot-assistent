@@ -1,40 +1,30 @@
+import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { HttpService } from '@nestjs/axios';
-import { firstValueFrom } from 'rxjs';
-import { AxiosResponse, AxiosRequestConfig } from 'axios';
+import { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 @Injectable()
-export class OpenAIService {
+export class OpenAIResolver {
+  private readonly headers: any;
   private readonly apiKey: string;
-  private readonly apiUrl: string;
 
   constructor(
     private configService: ConfigService,
     private readonly httpService: HttpService,
   ) {
     this.apiKey = this.configService.get<string>('OPENAI_API_KEY');
-    this.apiUrl = this.configService.get<string>('OPENAI_API_URL');
-  }
-
-  public async generateResponse(prompt: string): Promise<any> {
-    const data = {
-      model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 150,
-      temperature: 1,
-    };
-
-    const headers = {
+    this.headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.apiKey}`,
     };
+  }
 
+  public async generateResponse(data: any): Promise<any> {
     const config: AxiosRequestConfig = {
       baseURL: this.configService.get<string>('OPENAI_API_URL'),
       method: 'POST',
       data,
-      headers,
+      headers: this.headers,
     };
 
     return await this.httpService.axiosRef

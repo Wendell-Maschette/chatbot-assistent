@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ChatbotController } from './chatbot.controller';
+import { ChatbotController } from '../../../../src/presentations/chatbot/chatbot.controller';
 
 describe('ChatbotController', () => {
   let controller: ChatbotController;
