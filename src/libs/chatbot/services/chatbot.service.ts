@@ -8,13 +8,18 @@ export class ChatbotService {
   constructor(
     private readonly openaiService: OpenAIService,
     private readonly whatsappService: WhatsappService,
-    private readonly webhookService: WebhookService
+    private readonly webhookService: WebhookService,
   ) {}
 
+  public async generateAssistent(body: any) {
+    console.log(body);
+    return;
+  }
+
   public async processMessage(body: any): Promise<any> {
-    console.log('cheguei em processMessage')
+    console.log('cheguei em processMessage');
     const incomingMessage = this.webhookService.handleWebhook(body);
-    console.log('mensagem formatada', incomingMessage)
+    console.log('mensagem formatada', incomingMessage);
 
     const from = body.From;
     const dataInstance = await this.whatsappService.fetchInstances();
