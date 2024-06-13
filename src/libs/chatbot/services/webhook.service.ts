@@ -1,10 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { ChatbotService } from './chatbot.service';
 
 @Injectable()
 export class WebhookService {
-  constructor() {}
-
   public async handleWebhook(data: any): Promise<any> {
     // Verifique os dados recebidos do webhook
     console.log('Dados recebidos do Webhook:', JSON.stringify(data, null, 2));
