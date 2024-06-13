@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { ChatbotService } from '../chatbot/chatbot.service';
+import { ChatbotService } from './chatbot.service';
 
 @Injectable()
 export class WebhookService {
-  constructor(private readonly chatbotService: ChatbotService) {}
+  constructor() {}
 
   public async handleWebhook(data: any): Promise<any> {
     // Verifique os dados recebidos do webhook
@@ -21,6 +21,6 @@ export class WebhookService {
     };
 
     // Envie a mensagem formatada para o chatbot
-    return this.chatbotService.processMessage(formattedMessage);
+    return formattedMessage;
   }
 }

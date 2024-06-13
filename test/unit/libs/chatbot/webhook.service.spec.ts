@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ChatbotService } from './chatbot.service';
+import { WebhookService } from '../../../../src/libs/chatbot/services/webhook.service';
 
-describe('ChatbotService', () => {
-  let service: ChatbotService;
+describe('WebhookService', () => {
+  let service: WebhookService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ChatbotService],
+      providers: [WebhookService],
     }).compile();
 
-    service = module.get<ChatbotService>(ChatbotService);
+    service = module.get<WebhookService>(WebhookService);
   });
 
   it('should be defined', () => {

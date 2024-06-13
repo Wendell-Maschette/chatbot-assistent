@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ChatbotModule } from './chatbot/chatbot.module';
 import { ConfigModule } from '@nestjs/config';
-import { OpenaiModule } from './openai/openai.module';
-import { WhatsappModule } from './whatsapp/whatsapp.module';
-import { WebhookModule } from './webhook/webhook.module';
+import '@nestjs/config';
+import { ChatbotPresentationModule } from './presentations/chatbot/chatbot.presentation.module';
+import { ChatbotModule } from './libs/chatbot/chatbot.module';
 
 @Module({
   imports: [
@@ -11,9 +10,9 @@ import { WebhookModule } from './webhook/webhook.module';
       isGlobal: true,
     }),
     ChatbotModule,
-    OpenaiModule,
-    WhatsappModule,
-    WebhookModule,
+    ChatbotPresentationModule,
   ],
+  providers: [],
+  exports: [],
 })
 export class AppModule {}
